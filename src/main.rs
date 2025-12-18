@@ -61,6 +61,16 @@ impl QuantumCircuit {
         }
     }
 
+    fn evaluate(&mut self, instruction: Vec<Gate>){
+        for gate in instructions {
+            match gate {
+                Gate::H(q) => self.apply_h(),
+                Gate::X(q) => self.apply_x(),
+                Gate::CX(control, target) => self.apply_cx(control, target),
+            }
+        }
+    }
+
     // We use an immutable reference since printing the state shouldn't change the state
     fn show_state(&self) {
         let labels = ["|00>", "|01>", "|10>", "|11>"];
@@ -72,7 +82,7 @@ impl QuantumCircuit {
 
     // HADAMARD GATE
     // We use a mutable reference since the Hadamard Gate mutates the complex numbers in the array.
-    fn apply_h(&mut self) {
+    fn apply_h(&mut self, q) {
         let s: f64 = FRAC_1_SQRT_2.into();
 
         let a0 = self.state[0];
@@ -92,6 +102,15 @@ impl QuantumCircuit {
 
     }
 
+    fn apply_x(&mut self, q: usize) {
+        if q == 0 {
+            self.state.swap(0,2);
+            self.state.swap(1,3);
+        } else if q == 1 {
+            self.state.swap(0,1);
+            self.state.swap(2,3);
+        }
+    }
 
     fn apply_cx(&mut self) {
         self.state.swap(2,3);
