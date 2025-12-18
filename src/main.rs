@@ -37,3 +37,26 @@ fn parse_program(contents: &str) -> Vec<Gate> {
 
     return instructions;
 }
+
+struct QuantumCircuit {
+    state: [f64; 4],
+}
+
+impl QuantumCircuit {
+
+    fn new() -> Self {
+        return Self {
+            state: [1.0, 0.0, 0.0, 0.0]
+        }
+    }
+
+    // We use an immutable reference since printing the state shouldn't change the state
+    fn show_state(&self) {
+
+    }
+
+    // We use a mutable reference since the Hadamard Gate mutates the complex numbers in the array.
+    fn apply_h(&mut self) {
+
+    }
+}
