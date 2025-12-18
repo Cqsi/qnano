@@ -82,25 +82,39 @@ impl QuantumCircuit {
 
     // HADAMARD GATE
     // We use a mutable reference since the Hadamard Gate mutates the complex numbers in the array.
-    fn apply_h(&mut self, q) {
-        let s: f64 = FRAC_1_SQRT_2.into();
+    fn apply_h(&mut self, q: usize) {
+    let s = 1.0 / 2.0_f64.sqrt();
 
-        let a0 = self.state[0];
-        let b0 = self.state[2];
+    match q {
+        0 => {
+            // Pair 1: |00> and |10> (Indices 0 and 2)
+            let a = self.state[0];
+            let b = self.state[2];
+            self.state[0] = (a + b) * s;
+            self.state[2] = (a - b) * s;
 
-        // |00> = (|00> + |10>) * 1/sqrt(2)
-        self.state[0] = (a0 + b0) * s;
+            // Pair 2: |01> and |11> (Indices 1 and 3)
+            let c = self.state[1];
+            let d = self.state[3];
+            self.state[1] = (c + d) * s;
+            self.state[3] = (c - d) * s;
+        },
+        1 => {
+            // Pair 1: |00> and |01> (Indices 0 and 1)
+            let a = self.state[0];
+            let b = self.state[1];
+            self.state[0] = (a + b) * s;
+            self.state[1] = (a - b) * s;
 
-        // |10> = (|00> - |10>) * 1/sqrt(2)
-        self.state[2] = (a0 - b0) * s;
-
-        let a1 = self.state[1];
-        let b1 = self.state[3];
-
-        self.state[1] = (a1 + b1) * s;
-        self.state[3] = (a1 - b1) * s;
-
+            // Pair 2: |10> and |11> (Indices 2 and 3)
+            let c = self.state[2];
+            let d = self.state[3];
+            self.state[2] = (c + d) * s;
+            self.state[3] = (c - d) * s;
+        },
+        _ => println!("Error: Qano only supports qubits 0 and 1!"),
     }
+}
 
     fn apply_x(&mut self, q: usize) {
         if q == 0 {
@@ -112,7 +126,11 @@ impl QuantumCircuit {
         }
     }
 
-    fn apply_cx(&mut self) {
-        self.state.swap(2,3);
+    fn apply_cx(&mut self, control: usize, target: usize) {
+        if control == 0 && target == 1 {
+            self.state.swap(2,3);
+        } else if control == 1 && target == 0 {
+            self.state.swap(1,3);
+        }
     }
 }
