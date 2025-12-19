@@ -30,7 +30,11 @@ fn main() {
 enum Gate {
     H(usize),
     X(usize),
-    CX(usize, usize)
+    Z(usize),
+    S(usize),
+    T(usize),
+    CX(usize, usize),
+    CZ(usize),
 }
 
 fn parse_program(contents: &str) -> Vec<Gate> {
@@ -45,7 +49,11 @@ fn parse_program(contents: &str) -> Vec<Gate> {
         match tokens[0] {
             "h" => instructions.push(Gate::H(tokens[1].parse().unwrap())),
             "x" => instructions.push(Gate::X(tokens[1].parse().unwrap())),
+            "z" => instructions.push(Gate::Z(tokens[1].parse().unwrap())),
+            "s" => instructions.push(Gate::S(tokens[1].parse().unwrap())),
+            "t" => instructions.push(Gate::T(tokens[1].parse().unwrap())),
             "cx" => instructions.push(Gate::CX(tokens[1].parse().unwrap(), tokens[2].parse().unwrap())),
+            "cz" => instructions.push(Gate::CZ(tokens[1].parse().unwrap())),
             _ => print!("Unknown gate: {}", tokens[0]),
         }
     }
@@ -54,14 +62,19 @@ fn parse_program(contents: &str) -> Vec<Gate> {
 }
 
 struct QuantumCircuit {
-    state: [f64; 4], // c1|00> c2|01> c3|10> c4|11>
+    state: [Complex64; 4], // c1|00> c2|01> c3|10> c4|11>
 }
 
 impl QuantumCircuit {
 
     fn new() -> Self {
         return Self {
-            state: [1.0, 0.0, 0.0, 0.0],
+            state: [
+                Complex64::new(1.0, 0.0), 
+                Complex64::new(0.0, 0.0),
+                Complex64::new(0.0, 0.0),
+                Complex64::new(0.0, 0.0),
+            ],
         }
     }
 
@@ -70,7 +83,11 @@ impl QuantumCircuit {
             match gate {
                 Gate::H(q) => self.apply_h(q),
                 Gate::X(q) => self.apply_x(q),
+                Gate::Z(q) => self.apply_z(q),
+                Gate::S(q) => self.apply_s(q),
+                Gate::T(q) => self.apply_t(q),
                 Gate::CX(control, target) => self.apply_cx(control, target),
+                Gate::CZ(_q) => self.apply_cz(),
             }
         }
     }
