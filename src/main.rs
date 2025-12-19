@@ -1,6 +1,7 @@
 //use std::env;
 use std::fs;
 use num_complex::Complex64;
+use rand::prelude::*;
 
 fn main() {
     
@@ -188,4 +189,15 @@ impl QuantumCircuit {
             self.state.swap(1,3);
         }
     }
+
+    fn apply_cz(&mut self) {
+        self.state[3] *= -1.0
+    }
+
+    // fn measure(&mut self) -> {
+    //     let mut rng = thread_rng();
+    //     let r: f64 = rng.gen();
+
+    //     let mut cumulative 
+    // }
 }
