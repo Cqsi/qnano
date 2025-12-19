@@ -1,5 +1,13 @@
 Still very much in progress...
 
+## Supported gates
+
+Currently supported quantum gates:
+
+* X-gate 
+* Hadamard-gate
+* CNOT-gate
+
 ## Reference
 
 Quantum universal gates:
