@@ -1,5 +1,6 @@
 //use std::env;
 use std::fs;
+use num_complex::Complex64;
 
 fn main() {
     
@@ -114,7 +115,7 @@ impl QuantumCircuit {
                 self.state[2] = (c + d) * s;
                 self.state[3] = (c - d) * s;
             },
-            _ => println!("Error: Qano only supports qubits 0 and 1!"),
+            _ => println!("Error: qnano only supports qubits 0 and 1!"),
         }
     }
 
@@ -128,7 +129,55 @@ impl QuantumCircuit {
                 self.state.swap(0,1);
                 self.state.swap(2,3);
             },
-            _ => println!("Error: Qano only supports qubits 0 and 1!"),
+            _ => println!("Error: qnano only supports qubits 0 and 1!"),
+        }
+    }
+
+    fn apply_z(&mut self, q: usize) {
+        match q {
+            0 => {
+                self.state[2] *= -1.0;
+                self.state[3] *= -1.0;
+            },
+            1 => {
+                self.state[1] *= -1.0;
+                self.state[3] *= -1.0;
+            },
+            _ => println!("Error: qnano only supports qubits 0 and 1!"),
+        }
+    }
+
+    fn apply_s(&mut self, q: usize) {
+
+        let i = Complex64::i();
+
+        match q {
+            0 => {
+                self.state[2] *= i;
+                self.state[3] *= i;
+            },
+            1 => {
+                self.state[1] *= i;
+                self.state[3] *= i;
+            },
+            _ => println!("Error: qnano only supports qubits 0 and 1!"),
+        }
+    }
+
+    fn apply_t(&mut self, q: usize) {
+
+        let phase = Complex64::from_polar(1.0, std::f64::consts::PI/4.0);
+
+        match q {
+            0 => {
+                self.state[2] *= phase;
+                self.state[3] *= phase;
+            },
+            1 => {
+                self.state[1] *= phase;
+                self.state[3] *= phase;
+            },
+            _ => println!("Error: qnano only supports qubits 0 and 1!"),
         }
     }
 
