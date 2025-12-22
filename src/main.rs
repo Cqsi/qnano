@@ -1,11 +1,14 @@
 //use std::env;
 use std::fs;
+use std::env;
 use num_complex::Complex64;
 use rand::prelude::*;
 
 fn main() {
     
-    let filename = "code.qnano";
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+
     let contents = fs::read_to_string(filename).expect("Something went wrong reading the file.");
     let instructions = parse_program(&contents);
 
