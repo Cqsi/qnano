@@ -12,12 +12,12 @@ fn main() {
     let contents = fs::read_to_string(filename).expect("Something went wrong reading the file.");
     let instructions = parse_program(&contents);
 
-    println!("With text:\n{contents}\n");
+    println!("Running the quantum commands:\n\n{contents}\n");
 
     //let mut instructions = parse_program(&contents);
     let mut circuit = QuantumCircuit::new();
     circuit.show_state();
-    println!("Applying gates...");
+    println!("\nApplying gates...\n");
     circuit.evaluate(instructions);
     circuit.show_state();
 
@@ -100,7 +100,7 @@ impl QuantumCircuit {
         let labels = ["|00>", "|01>", "|10>", "|11>"];
 
         for i in 0..4 {
-            println!("{}: {}", labels[i], &self.state[i])
+            println!("{}: {:.2}", labels[i], &self.state[i])
         }
     }
 
