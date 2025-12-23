@@ -4,6 +4,8 @@
 
 QNano is a lightweight two-qubit quantum circuit simulator and gate compiler written in Rust. It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation.
 
+<br />
+
 ## :zap: Key Features
 * **Universal quantum gates:** It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
 
@@ -14,6 +16,8 @@ QNano is a lightweight two-qubit quantum circuit simulator and gate compiler wri
 * **Entanglement Support:** Full CX gate implementation allows for the creation of entangled qubits.
 
 * **Custom .qnano DSL:** A simple text-based assembly language for defining and loading quantum circuits.
+
+<br />
 
 ## :file_folder: Installation
 
@@ -28,6 +32,8 @@ Once installed, you can run the simulator from any directory:
 qnano bell_state.qnano
 ```
 The example above uses the `bell_state.qnano` file that is [found in the project root](bell_state.qnano).
+
+<br />
 
 ## :books: Example
 
@@ -56,7 +62,9 @@ Applying gates...
 |11>: 0.71+0.00i
 ```
 
-Let's say we would measure qubit 0 and find that it has value 0, then qubit 1 must be 0 as well. Same goes the other way around when measuring the qubit to be 1. These qubits are no longer two independent bits; they are *entangled*. Even if you took these two qubits to opposite sides of the galaxy, the moment you look at one, the other instantly adopts the same value
+These qubits are no longer two independent bits; they are *entangled*. Even if you took these two qubits to opposite sides of the galaxy, the moment you look at one, the other instantly adopts the same value.
+
+<br />
 
 ## :key: Supported gates
 
@@ -80,6 +88,8 @@ This set of quantum gates is universal, meaning that it can in theory perform an
 
 See [this visual](pictures/quantum_gates.jpeg) for an overview of support quantum gates.
 
+<br />
+
 ## :crystal_ball: Future improvements
 
 Currently a work in progress.
@@ -89,6 +99,8 @@ Currently a work in progress.
 * Quantum circuit visualization using Ratatui (see [archive_files](/archive_files/))
 * Writing qnano programs in the console
 * Error messages
+
+<br />
 
 ## :pencil2: Blog post
 Blog post is coming soon.
