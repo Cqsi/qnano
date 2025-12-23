@@ -1,39 +1,54 @@
 # QNano Language Documentation
 
-This document describes the syntax and usage of the `.qnano` language, a lightweight assembly-style language for defining 2-qubit quantum circuits.
+QNano is a lightweight assembly-style language for defining 2-qubit quantum circuits.
 
----
+## File Format
 
-## 1. File Structure
-QNano files are plain text files with a `.qnano` extension.
-* Each instruction must be on a **new line**.
-* Instructions are **case-insensitive** (e.g., `H 0` and `h 0` are identical).
-* Blank lines and lines starting with `#` (comments) are ignored.
+- Files use the `.qnano` extension
+- One instruction per line
+- Case-insensitive (`H 0` = `h 0`)
+- Lines starting with `#` are comments
+- Blank lines are ignored
 
----
+## Qubits
 
-## 2. Qubit Addressing
-QNano simulates a 2-qubit system. Qubits are zero-indexed:
-* **Qubit 0**: The first qubit.
-* **Qubit 1**: The second qubit.
+QNano simulates 2 qubits indexed as **0** and **1**.
 
-Attempting to address a qubit index other than `0` or `1` will result in an error during execution.
+## Single-Qubit Gates
 
----
+**Syntax:** `gate qubit`
 
-## 3. Single-Qubit Gates
-These gates act on one specific qubit. 
-**Syntax:** `[gate_name] [qubit_index]`
-
-| Command | Gate Name | Description |
-| :--- | :--- | :--- |
-| `h` | Hadamard | Places the qubit into a superposition of 0 and 1. |
-| `x` | Pauli-X | Performs a bit-flip (Quantum NOT gate). |
-| `z` | Pauli-Z | Performs a phase-flip (flips the sign of the $|1\rangle$ state). |
-| `s` | S-Gate | Applies a 90-degree phase shift ($i$). |
-| `t` | T-Gate | Applies a 45-degree phase shift ($e^{i\pi/4}$). |
+| Gate | Description |
+|------|-------------|
+| `h` | Hadamard - creates superposition |
+| `x` | Pauli-X - bit flip (NOT gate) |
+| `z` | Pauli-Z - phase flip |
+| `s` | S-gate - 90° phase shift |
+| `t` | T-gate - 45° phase shift |
 
 **Example:**
-```text
-h 0    # Put Qubit 0 in superposition
-x 1    # Flip Qubit 1 to the |1> state
+```
+h 0    # Superposition on qubit 0
+x 1    # Flip qubit 1
+```
+
+## Two-Qubit Gates
+
+| Gate | Syntax | Description |
+|------|--------|-------------|
+| `cx` | `cx control target` | Controlled-NOT - flips target if control is \|1⟩ |
+| `cz` | `cz qubit_a qubit_b` | Controlled-Z - phase flip on \|11⟩ state |
+
+**Example:**
+```
+h 0
+cx 0 1    # Create Bell state
+```
+
+## Running QNano
+
+```bash
+qnano your_file.qnano
+```
+
+**Output:** Final state vector showing complex amplitudes and probabilities for all four basis states (|00⟩, |01⟩, |10⟩, |11⟩).
