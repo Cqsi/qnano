@@ -2,7 +2,7 @@
 
 ![Overview](/pictures/new_overview.png)
 
-QNano is a lightweight two-qubit quantum circuit simulator and gate compiler written in Rust. It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation.
+QNano is a lightweight assembly-style language for defining and compiling two-qubit quantum circuits. It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation.
 
 <br />
 
