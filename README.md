@@ -9,13 +9,14 @@ It's designed for rapid prototyping and provides a straightforward look into sta
 Install directly from GitHub using Cargo:
 
 ```
-cargo install --git https://github.com/your-username/qnano
+cargo install --git https://github.com/Cqsi/qnano
 ```
 
 Once installed, you can run the simulator from any directory:
 ```
-qnano your_circuit.qnano
+qnano bell_state.qnano
 ```
+The example above uses the `bell_state.qnano` file that is found in the project root.
 
 ## Key Features
 * **Universal quantum gates:** It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
