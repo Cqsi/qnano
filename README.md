@@ -2,7 +2,7 @@
 
 QNano is a lightweight 2-qubit quantum circuit simulator and gate compiler written in Rust. 
 
-It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation using complex probability amplitudes.
+It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation.
 
 ## Key Features
 * **Universal quantum gates:** It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
@@ -19,13 +19,25 @@ It's designed for rapid prototyping and provides a straightforward look into sta
 
 Currently supported quantum gates:
 
-* X-gate 
-* Hadamard-gate
-* CNOT-gate
+* H (Hadamard)
+
+* X (Pauli-X / NOT)
+
+* Z (Pauli-Z / Phase-flip)
+
+* S (Phase / 90° rotation)
+
+* T (T-gate / 45° rotation)
+
+* CX (Controlled-NOT / CNOT)
+
+* CZ (Controlled-Z)
+
+![Quantum Gates](pictures/quantum_gates.jpeg)
 
 ## Future improvements
 
-Collection of features and improvements which is currently a work in progress.
+Currently a work in progress.
 
 * Implement Measure-gate and history
 * Quantum circuit visualization using Ratatui (see ![archive_files](https://github.com/Cqsi/qnano/tree/master/archive_files))
