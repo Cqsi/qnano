@@ -29,10 +29,10 @@ qnano bell_state.qnano
 ```
 The example above uses the `bell_state.qnano` file that is [found in the project root](bell_state.qnano).
 
-## :key: Examples 
+## :books: Examples 
 
 
-## :crystal_ball: Supported gates
+## :key: Supported gates
 
 Currently supported quantum gates:
 
@@ -54,15 +54,15 @@ This set of quantum gates is universal, meaning that it can in theory perform an
 
 See [this visual](pictures/quantum_gates.jpeg) for an overview of support quantum gates.
 
-## Future improvements
+## :crystal_ball: Future improvements
 
 Currently a work in progress.
 
 * Ability to change initial state
 * Implement Measure-gate and history
-* Quantum circuit visualization using Ratatui (see ![archive_files](https://github.com/Cqsi/qnano/tree/master/archive_files))
+* Quantum circuit visualization using Ratatui (see [archive_files](/archive_files/))
 * Writing qnano programs in the console
 * Error messages
 
-## Blog post
+## :pencil2: Blog post
 Blog post is coming soon.
