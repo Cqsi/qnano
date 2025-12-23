@@ -1,8 +1,10 @@
 # QNano 
 
-QNano is a lightweight 2-qubit quantum circuit simulator and gate compiler written in Rust. 
+QNano is a lightweight two-qubit quantum circuit simulator and gate compiler written in Rust. 
 
 It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation.
+
+## Installation
 
 ## Key Features
 * **Universal quantum gates:** It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
@@ -14,6 +16,8 @@ It's designed for rapid prototyping and provides a straightforward look into sta
 * **Entanglement Support:** Full CX gate implementation allows for the creation of entangled qubits.
 
 * **Custom .qnano DSL:** A simple text-based assembly language for defining and loading quantum circuits.
+
+## Examples 
 
 ## Supported gates
 
@@ -33,28 +37,16 @@ Currently supported quantum gates:
 
 * CZ (Controlled-Z)
 
-![Quantum Gates](pictures/quantum_gates.jpeg)
+This set of quantum gates is universal, meaning that it can in theory perform any set of quantum computation on two qubits.
+
+See [this visual](pictures/quantum_gates.jpeg) for an overview of support quantum gates.
 
 ## Future improvements
 
 Currently a work in progress.
 
+* Ability to change initial state
 * Implement Measure-gate and history
 * Quantum circuit visualization using Ratatui (see ![archive_files](https://github.com/Cqsi/qnano/tree/master/archive_files))
 * Writing qnano programs in the console
 * Error messages
-
-## Reference
-
-Quantum universal gates:
-
-enum Gate {
-    H(usize),          // Superposition
-    X(usize),          // Bit-flip (NOT)
-    Z(usize),          // Phase-flip
-    S(usize),          // 90-degree phase shift
-    T(usize),          // 45-degree phase shift (Crucial for universality)
-    CX(usize, usize),  // Controlled-NOT
-    CZ(usize, usize),  // Controlled-Z
-    Measure,           // Collapses the state
-}

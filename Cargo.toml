@@ -1,7 +1,12 @@
 [package]
-name = "nanoq"
+name = "qnano"
 version = "0.1.0"
 edition = "2024"
+description = "A lightweight 2-qubit quantum gate simulator"
+
+[[bin]]
+name = "qnano"
+path = "src/main.rs"
 
 [dependencies]
 num-complex = "0.4"

@@ -7,9 +7,14 @@ use rand::prelude::*;
 fn main() {
     
     let args: Vec<String> = env::args().collect();
-    let filename = &args[1];
+    
+    if args.len() < 2 {
+        println!("Usage: qnano <file_path.qnano>");
+        return;
+    }
 
-    let contents = fs::read_to_string(filename).expect("Something went wrong reading the file.");
+    let file_path = &args[1];
+    let contents = std::fs::read_to_string(file_path).expect("Could not read the file!");
     let instructions = parse_program(&contents);
 
     println!("Running the quantum commands:\n\n{contents}\n");
