@@ -5,15 +5,15 @@ QNano is a lightweight 2-qubit quantum circuit simulator and gate compiler writt
 It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation using complex probability amplitudes.
 
 ## Key Features
-* *Universal quantum gates:* It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
+* **Universal quantum gates:** It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
 
-* *Four state vectors:* Tracks ∣00⟩, ∣01⟩, ∣10⟩, ∣11⟩.
+* **Four state vectors:** Tracks ∣00⟩, ∣01⟩, ∣10⟩, ∣11⟩.
 
-* *Complex phases:* Uses [Complex64](https://docs.rs/num-complex/latest/num_complex/struct.Complex.html) to track amplitudes.
+* **Complex phases:** Uses [Complex64](https://docs.rs/num-complex/latest/num_complex/struct.Complex.html) to track amplitudes.
 
-* *Entanglement Support:* Full CX gate implementation allows for the creation of entangled qubits.
+* **Entanglement Support:** Full CX gate implementation allows for the creation of entangled qubits.
 
-* *Custom .qnano DSL:* A simple text-based assembly language for defining and loading quantum circuits.
+* **Custom .qnano DSL:** A simple text-based assembly language for defining and loading quantum circuits.
 
 ## Supported gates
 
