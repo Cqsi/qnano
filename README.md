@@ -4,19 +4,6 @@ QNano is a lightweight two-qubit quantum circuit simulator and gate compiler wri
 
 It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation.
 
-## Installation
-
-Install directly from GitHub using Cargo:
-
-```
-cargo install --git https://github.com/Cqsi/qnano
-```
-
-Once installed, you can run the simulator from any directory:
-```
-qnano bell_state.qnano
-```
-The example above uses the `bell_state.qnano` file that is found in the project root.
 
 ## Key Features
 * **Universal quantum gates:** It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
@@ -29,7 +16,22 @@ The example above uses the `bell_state.qnano` file that is found in the project 
 
 * **Custom .qnano DSL:** A simple text-based assembly language for defining and loading quantum circuits.
 
+## Installation
+
+Install directly from GitHub using Cargo:
+
+```
+cargo install --git https://github.com/Cqsi/qnano
+```
+
+Once installed, you can run the simulator from any directory:
+```
+qnano bell_state.qnano
+```
+The example above uses the `bell_state.qnano` file that is [found in the project root](bell_state.qnano).
+
 ## Examples 
+
 
 ## Supported gates
 
