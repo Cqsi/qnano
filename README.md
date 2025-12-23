@@ -4,7 +4,7 @@ QNano is a lightweight two-qubit quantum circuit simulator and gate compiler wri
 
 It's designed for rapid prototyping and provides a straightforward look into state-vector manipulation.
 
-![Overview](/pictures/overview.png)
+![Overview](/pictures/new_overview.png)
 
 ## :zap: Key Features
 * **Universal quantum gates:** It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
