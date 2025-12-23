@@ -2,7 +2,6 @@
 use std::fs;
 use std::env;
 use num_complex::Complex64;
-use rand::prelude::*;
 
 fn main() {
     
@@ -17,22 +16,13 @@ fn main() {
     let contents = std::fs::read_to_string(file_path).expect("Could not read the file!");
     let instructions = parse_program(&contents);
 
-    println!("Running the quantum commands:\n\n{contents}\n");
+    println!("\nRunning the following quantum gates:\n\n{contents}\n");
 
-    //let mut instructions = parse_program(&contents);
     let mut circuit = QuantumCircuit::new();
     circuit.show_state();
     println!("\nApplying gates...\n");
     circuit.evaluate(instructions);
     circuit.show_state();
-
-    // q.show_state();
-    // println!("Applying Hadamard Gate: ");
-    // q.apply_h();
-    // q.show_state();
-    // println!("Applying CNOT Gate: ");
-    // q.apply_cx();
-    // q.show_state();
 }
 
 enum Gate {
@@ -100,7 +90,6 @@ impl QuantumCircuit {
         }
     }
 
-    // We use an immutable reference since printing the state shouldn't change the state
     fn show_state(&self) {
         let labels = ["|00>", "|01>", "|10>", "|11>"];
 
@@ -110,7 +99,6 @@ impl QuantumCircuit {
     }
 
     // HADAMARD GATE
-    // We use a mutable reference since the Hadamard Gate mutates the complex numbers in the array.
     fn apply_h(&mut self, q: usize) {
         let s = 1.0 / 2.0_f64.sqrt();
 
@@ -145,6 +133,7 @@ impl QuantumCircuit {
         }
     }
 
+    // X GATE
     fn apply_x(&mut self, q: usize) {
         match q {
             0 => {
@@ -159,6 +148,7 @@ impl QuantumCircuit {
         }
     }
 
+    // Z GATE
     fn apply_z(&mut self, q: usize) {
         match q {
             0 => {
@@ -173,6 +163,7 @@ impl QuantumCircuit {
         }
     }
 
+    // S GATE
     fn apply_s(&mut self, q: usize) {
 
         let i = Complex64::i();
@@ -190,6 +181,7 @@ impl QuantumCircuit {
         }
     }
 
+    // T GATE
     fn apply_t(&mut self, q: usize) {
 
         let phase = Complex64::from_polar(1.0, std::f64::consts::PI/4.0);
@@ -207,6 +199,7 @@ impl QuantumCircuit {
         }
     }
 
+    // CNOT GATE
     fn apply_cx(&mut self, control: usize, target: usize) {
         if control == 0 && target == 1{
             self.state.swap(2,3);
@@ -215,10 +208,12 @@ impl QuantumCircuit {
         }
     }
 
+    // CZ GATE
     fn apply_cz(&mut self) {
         self.state[3] *= -1.0
     }
 
+    // TODO MEASURE GATE
     // fn measure(&mut self) -> {
     //     let mut rng = thread_rng();
     //     let r: f64 = rng.gen();
