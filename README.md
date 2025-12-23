@@ -6,6 +6,17 @@ It's designed for rapid prototyping and provides a straightforward look into sta
 
 ## Installation
 
+Install directly from GitHub using Cargo:
+
+```
+cargo install --git https://github.com/your-username/qnano
+```
+
+Once installed, you can run the simulator from any directory:
+```
+qnano your_circuit.qnano
+```
+
 ## Key Features
 * **Universal quantum gates:** It can perform any quantum computation possible on two qubits. See [supported gates](#supported-gates).
 
@@ -50,3 +61,6 @@ Currently a work in progress.
 * Quantum circuit visualization using Ratatui (see ![archive_files](https://github.com/Cqsi/qnano/tree/master/archive_files))
 * Writing qnano programs in the console
 * Error messages
+
+## Blog post
+Blog post is coming soon.
