@@ -45,10 +45,16 @@ This code translates to the following:
 
 2. After this we apply CNOT (Controlled-NOT), which uses qubit 0 as a control and qubit 1 as a target. This is the same as saying "If qubit 0 is 1, flip qubit 1."
 
-This results in the famous Bell State, where the qubits are now entangled. The final state has the following amplitudes:
+Running it through the compiler gives us the final state:
 
-∣00⟩: 0.707
-∣11⟩: 0.707
+```
+Applying gates...
+
+|00>: 0.71+0.00i
+|01>: 0.00+0.00i
+|10>: 0.00+0.00i
+|11>: 0.71+0.00i
+```
 
 Let's say we would measure qubit 0 and find that it has value 0, then qubit 1 must be 0 as well. Same goes the other way around when measuring the qubit to be 1. These qubits are no longer two independent bits; they are *entangled*. Even if you took these two qubits to opposite sides of the galaxy, the moment you look at one, the other instantly adopts the same value
 
