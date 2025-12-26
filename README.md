@@ -62,8 +62,6 @@ Applying gates...
 |11>: 0.71+0.00i
 ```
 
-These qubits are no longer two independent bits; they are *entangled*. Even if you took these two qubits to opposite sides of the galaxy, the moment you look at one, the other instantly adopts the same value.
-
 <br />
 
 ## :key: Supported gates
